@@ -18,7 +18,6 @@ def f(kappa_12, kappa_11=1.2):
     else:
         return 0
 
-
 def g(kappa_21, kappa_22=1.4):
     a = 1-2/kappa_22**2
     b = 2/kappa_21**2-2/kappa_22**2
@@ -29,7 +28,6 @@ def g(kappa_21, kappa_22=1.4):
     else:
         return 0
 
-#%%
 
 
 x = np.linspace(np.sqrt(2), 3, 100)
@@ -49,4 +47,3 @@ plt.ylabel(r"$\beta_1$", fontsize=15)
 plt.legend(loc='upper right')
 plt.show()
 
-# %%
