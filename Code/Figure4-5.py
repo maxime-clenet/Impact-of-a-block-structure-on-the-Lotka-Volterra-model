@@ -2,9 +2,10 @@
 """
 @author: Maxime Clenet
 
+This file is associated with Figures 4 and 5.
 
-This file allows you to display the graph showing the
-theoretical distribution vs. the empirical distribution.
+This file displays the graph comparing the theoretical
+and empirical distribution.
 """
 
 # Importation of the packages and required functions.
@@ -15,7 +16,7 @@ from lemkelcp import lemkelcp
 
 
 # For more informations on this two functions see functions.py
-from Code.base_function import block_matrix_normal, block_matrix_unif, block_density, block_function
+from base_function import block_matrix_normal, block_matrix_unif, block_density, block_function
 
 
 def plot_distrib(mu, s, beta, B_size=2000, law_type='normal'):
@@ -26,15 +27,19 @@ def plot_distrib(mu, s, beta, B_size=2000, law_type='normal'):
 
     Parameters
     ----------
-    alpha : float in [sqrt(2),Infty), optional
-        Associated to the alpha value in the paper.
-        The default is 2.
-    mu : float in (-infty,1], optional
+    
+    mu : matrix in (-infty,1], optional
         Associated to the mu value in the paper.
-        The default is 0.2.
+    s : matrix in [sqrt(2),Infty), optional
+        Associated to the s matrix in the paper.
+    beta : matrix of size 2x2, optional
+        Associated to the beta vector in the paper.
+
     B_size : int, optional
         Size of the square matrix B.
         The default is 2000.
+    law_type : 'normal' or 'unif.
+        The default is 'normal'.
 
     Returns
     -------
@@ -42,7 +47,7 @@ def plot_distrib(mu, s, beta, B_size=2000, law_type='normal'):
 
     """
     # Computations for the empirical distribution.
-    # We find a solution using the pivot algorithm.
+    
     if law_type == 'normal':
         mu_norm = mu/B_size
         Sig = s
@@ -62,7 +67,11 @@ def plot_distrib(mu, s, beta, B_size=2000, law_type='normal'):
     res_lcp_pos_1 = res_lcp_1[res_lcp_1 != 0]
     res_lcp_pos_2 = res_lcp_2[res_lcp_2 != 0]
     (pi_1, pi_2, m_1, m_2, sigma_1, sigma_2) = block_function(mu, 1/s, beta)
-    print(m_1,m_2)
+    
+
+
+    # This part of the function is dedicated to the plot of the function:
+
     x = np.linspace(0.01, 4, 1000)
 
     fig = plt.figure(1, figsize=(10, 6))
@@ -96,12 +105,15 @@ def plot_distrib(mu, s, beta, B_size=2000, law_type='normal'):
     return fig
 
 
-# mu = np.array([[0, 0], [0, 0]])
-# s = np.array([[1/2, 1/np.sqrt(2)], [1/5, 1/9]])
-# beta = np.array([3/4, 1/4])
+# Plot of Figure 4 :
 
-# plot_distrib(mu, s, beta, B_size=2000, law_type='normal')
+mu = np.array([[0, 0], [0, 0]])
+s = np.array([[1/2, 1/np.sqrt(2)], [1/5, 1/9]])
+beta = np.array([3/4, 1/4])
 
+plot_distrib(mu, s, beta, B_size=2000, law_type='normal')
+
+# Plot of Figure 5 :
 
 mu = np.array([[0, 0], [0, 0]])
 s = np.array([[1/2, 2/3], [1/3, 1/4]])
