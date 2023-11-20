@@ -8,7 +8,7 @@ Created on Wed Jun 22 09:40:44 2022
 
 import numpy as np
 import matplotlib.pyplot as plt
-from functions import block_matrix_normal
+from Code.base_function import block_matrix_normal
 
 
 def Gamma(u, v, z, beta, sigma):

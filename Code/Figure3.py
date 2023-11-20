@@ -7,9 +7,8 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from functions import block_function, empirical_prop
+from Code.base_function import block_function, empirical_prop
 
-# %%
 
 # Test des sensi dans le cas LCP:
 
@@ -21,7 +20,6 @@ s = np.array([[1, 1], [1, 1]])/2
 print(block_function(mu, 1/s, beta))
 
 
-# %%
 
 x = np.linspace(1/5, 1, 20)
 y_theo = np.zeros((6, 20))
@@ -35,10 +33,8 @@ for i in range(20):
     print(i)
     s = np.array([[1/2, x[i]], [x[i], 1/1.4]])
     y_theo[:, i] = block_function(mu, 1/s, beta)
-    y_emp[:, i] = empirical_prop(500, 1/s, mu, beta)
+    y_emp[:, i] = empirical_prop(50, 1/s, mu, beta)
 
-
-# %%
 
 for t in range(6):
     if t in {0, 1}:
@@ -91,4 +87,4 @@ for t in range(6):
         plt.show()
         plt.close()
 
-# %%
+

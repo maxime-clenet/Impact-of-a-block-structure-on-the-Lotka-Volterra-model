@@ -68,9 +68,8 @@ ax.zaxis.set_major_locator(MaxNLocator(5))
 ax.set_facecolor('w')
 ax.view_init(25, 30)
 fig.tight_layout()
-fig.savefig('Feasibility_Phase_Diagram.pdf')
+#fig.savefig('Feasibility_Phase_Diagram.pdf')
 
-# %%
 
 # Heatmap format:
 

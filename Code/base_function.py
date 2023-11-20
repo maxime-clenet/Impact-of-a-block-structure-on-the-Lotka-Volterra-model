@@ -15,7 +15,6 @@ import scipy.stats as stats
 from lemkelcp import lemkelcp
 
 
-# %%
 
 # The main functions used in the block model:
 
@@ -99,7 +98,6 @@ def block_matrix_unif(n_size, beta, sigma):
 
     return A
 
-# %%
 
 # Part dedicated to the dynamics of the 2-blocks model
 
@@ -142,7 +140,6 @@ def dynamics_LV_2B(alpha, A, x_init, N, nbr_it, tau):
     return S
 
 
-# %%
 
 
 def E_cond(delta):
@@ -257,7 +254,6 @@ def Gamma(x, mu, Sig, Beta):
     return (f_sigma_1(x[0], x[1], x[2], x[3], x[4], x[5], mu, Sig, Beta), f_sigma_2(x[0], x[1], x[2], x[3], x[4], x[5], mu, Sig, Beta), h_sigma_1(x[0], x[1], x[2], x[3], x[4], x[5], mu, Sig, Beta), h_sigma_2(x[0], x[1], x[2], x[3], x[4], x[5], mu, Sig, Beta), g_sigma_1(x[0], x[1], x[2], x[3], x[4], x[5], mu, Sig, Beta), g_sigma_2(x[0], x[1], x[2], x[3], x[4], x[5], mu, Sig, Beta))
 
 
-# %%
 
 
 def block_function(mu, Alpha, Beta):
@@ -286,7 +282,7 @@ def block_function(mu, Alpha, Beta):
 
     return(pi_1, pi_2, m_1, m_2, sigma_1, sigma_2)
 
-# %%
+
 
 # Empirical resolution:
 
@@ -369,7 +365,6 @@ def empirical_prop(A_size, alpha, mu, beta, mc_prec=500):
     return np.mean(S_p1), np.mean(S_p2), np.mean(S_m1), np.mean(S_m2), np.mean(S_sigma1), np.mean(S_sigma2)
 
 
-# %%
 
 def block_density(x, k, pi_1, pi_2, m_1, m_2, sigma_1, sigma_2, mu, Sig, Beta):
 

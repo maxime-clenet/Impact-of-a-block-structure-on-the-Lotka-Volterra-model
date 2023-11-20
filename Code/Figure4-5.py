@@ -15,7 +15,7 @@ from lemkelcp import lemkelcp
 
 
 # For more informations on this two functions see functions.py
-from functions import *
+from Code.base_function import block_matrix_normal, block_matrix_unif, block_density, block_function
 
 
 def plot_distrib(mu, s, beta, B_size=2000, law_type='normal'):
