@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Oct  7 13:45:26 2021
+@author: Maxime Clenet
 
-@author: Maxime
+This file is associated with Figure 6.
 
-Transition toward feasibility.
+Transition towards co-feasibility for the 2-blocks model 
 """
 
-# Importation of the packages
+# Importation of the main packages and functions:
 import numpy as np
 import matplotlib.pyplot as plt
 
 
+
+# Function that compute the feasibility solution in function of the matrix of interaction.
 def feasibility_solution(kappa_1, kappa_2, N, sigma):
 
     beta_1 = 5/10

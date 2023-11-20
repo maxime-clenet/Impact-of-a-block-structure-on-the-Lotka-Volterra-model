@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 @author: Maxime Clenet
+
+This file is associated to the Figure 8.
+
+Representation of the co-feasibility domain depending on 
+the fixed intra-community interaction.
 """
 
+#Importation of the main packages and functions:
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -29,6 +35,8 @@ def g(kappa_21, kappa_22=1.4):
         return 0
 
 
+
+# Part dedicated to the plot of the figures:
 
 x = np.linspace(np.sqrt(2), 3, 100)
 y_1 = np.linspace(0, 1, 100)

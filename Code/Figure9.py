@@ -1,16 +1,29 @@
+# -*- coding: utf-8 -*-
+"""
+@author: Maxime Clenet
+
+This file is associated to the Figure 9.
+
+Graphical representation of equation system associated to the 
+co-feasibility with variance constraint.
+"""
+
+#Importation of the main packages and functions:
 import numpy as np
 import matplotlib.pyplot as plt
 
 x = -np.linspace(-1,2,1000)
 z = np.linspace(-2,2,1000)
 
-
+# Parameters of the model that can be changed to display each figures:
 beta1 = 1/2
 beta2 = 1-beta1
 gamma_11 = 0.5
 gamma_22 = 0.5
 Gamma_n = 0.8
 
+
+#Variance constraint:
 c = Gamma_n-beta1*gamma_11**2-beta2*gamma_22**2
 
 x,z = np.meshgrid(x,z)

@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Feb 14 11:41:17 2022
+@author: Maxime Clenet
 
-@author: Maxime
+Implementation of the function needed to run the Figure files.
 
 """
 
 
 # Importation of the packages:
-
 import numpy as np
 from scipy import optimize
 import scipy.stats as stats

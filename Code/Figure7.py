@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Oct 25 15:55:47 2021
-
 @author: Maxime
+
+This file is associated to the Figure 7.
+
+Representation of the co-feasibility phase diagram.
 """
 
-
+# Importation of the main packages and functions:
 import seaborn as sns
 from scipy import linspace, meshgrid, arange, empty, concatenate, newaxis, shape
 from numpy.random import randn, shuffle
@@ -15,11 +17,13 @@ from matplotlib.ticker import MaxNLocator
 import numpy as np
 import matplotlib.pyplot as plt
 
-N = 100
 
+# Size of the matrix of interaction:
+N = 100
+# Size of the communities:
 Beta = [1/2, 1/2]
 
-
+# Function that compute the co-feasible domain:
 def f(Kappa_11, Kappa_22, Beta):
 
     a = np.sqrt(Beta[1]/(1/2-Beta[0]/Kappa_11**2))

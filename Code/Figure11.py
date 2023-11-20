@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jun 22 09:40:44 2022
-
 @author: Maxime Clenet
+
+This file is associated to the Figure 11 in appendix.
+
+Compute the Spectrum (histogram) of the Hermitian random matrix with its upper bound.
+
 """
 
-
+# Importation of the main packages and functions:
 import numpy as np
 import matplotlib.pyplot as plt
-from Code.base_function import block_matrix_normal
+from base_function import block_matrix_normal
 
 
 def Gamma(u, v, z, beta, sigma):
@@ -19,7 +22,7 @@ def Gamma(u, v, z, beta, sigma):
     return(z+a1*u+a2*v, z+a3*u+a4*v)
 
 
-# Renvoie la transformée de Stieljes.
+# Stieljes transform:
 def g(x, beta, sigma):
     z = complex(x, 10**(-3))
     u = -1/z
@@ -32,6 +35,7 @@ def g(x, beta, sigma):
 
 
 def plot_block_spectrum(n, beta, sigma):
+
 
     mu = np.array([[0, 0], [0, 0]])
     sigma_norm = sigma/np.sqrt(n)
@@ -73,28 +77,30 @@ def plot_block_spectrum(n, beta, sigma):
     return fig
 # plt.savefig('Spectre_Ginibre_Presentation_Lille.pdf')
 
-#Case 1:
-
+# Case 1:
+# Choice of the paramters:
 beta = [1/2, 1/2]
 sigma = np.array([[1/np.sqrt(2), 1/np.sqrt(2)], [1/np.sqrt(2), 1/np.sqrt(2)]])
 
 plot_block_spectrum(n=2000, beta=beta, sigma=sigma)
 
+# Case 2:
+# Choice of the paramters:
 beta = [1/2, 1/2]
 sigma = np.array([[1/2, 1], [1, 1/8]])
 
 plot_block_spectrum(n=2000, beta=beta, sigma=sigma)
 
+# Case 3:
+# Choice of the paramters:
 beta = [1/2, 1/2]
 sigma = np.array([[1, 1/2], [1/8, 1]])
 
 plot_block_spectrum(n=2000, beta=beta, sigma=sigma)
 
+# Case 4:
+# Choice of the paramters:
 beta = [3/4, 1/4]
 sigma = np.array([[1/3, 1/5], [1, 1/2]])
 
-
-# An exemple of the first scenario:
 plot_block_spectrum(n=2000, beta=beta, sigma=sigma)
-
-# An exemple of the second scenario:
