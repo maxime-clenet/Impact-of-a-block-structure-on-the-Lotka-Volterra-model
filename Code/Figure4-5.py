@@ -84,10 +84,10 @@ def plot_distrib(mu, s, beta, B_size=2000, law_type='normal'):
     for i, v in enumerate(x):
         y_2[i] = block_density(v, 1, pi_1, pi_2, m_1, m_2,
                                sigma_1, sigma_2, mu, Sig, beta)
-    if law_type == 'normal':
-        plt.vlines(np.mean(res_lcp_pos_1),0,3,linewidth=2,linestyles = "dashed",color = "blue")
-        plt.vlines(np.mean(res_lcp_pos_2),0,3,linewidth=2,linestyles = "dashed",color = "red")
-        plt.ylim(0,2.3)
+    #if law_type == 'normal':
+    plt.vlines(np.mean(res_lcp_pos_1),0,3,linewidth=2,linestyles = "dashed",color = "blue")
+    plt.vlines(np.mean(res_lcp_pos_2),0,3,linewidth=2,linestyles = "dashed",color = "red")
+    plt.ylim(0,2.3)
 
     plt.plot(x, y_1, linewidth=2.5, color='blue', label='Community 1')
     plt.plot(x, y_2, linewidth=2.5, color='red', label='Community 2')
