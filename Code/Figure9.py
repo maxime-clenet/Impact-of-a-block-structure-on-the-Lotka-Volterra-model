@@ -4,58 +4,73 @@
 
 This file is associated to the Figure 9.
 
-Graphical representation of equation system associated to the 
-co-feasibility with variance constraint.
+Representation of the co-feasibility domain depending on 
+the fixed intra-community interaction.
+
+In particular, we are interested in the case where (kappa11,kappa22) > (kappa12,kappa21).
 """
 
 #Importation of the main packages and functions:
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = -np.linspace(-1,2,1000)
-z = np.linspace(-2,2,1000)
 
-# Parameters of the model that can be changed to display each figures:
-beta1 = 1/2
-beta2 = 1-beta1
-gamma_11 = 0.5
-gamma_22 = 0.5
-Gamma_n = 0.8
-
-
-#Variance constraint:
-c = Gamma_n-beta1*gamma_11**2-beta2*gamma_22**2
-
-x,z = np.meshgrid(x,z)
-
-u = 0  # x-position of the center
-v = 0  # y-position of the center
-a = np.sqrt(c/beta2)  # radius on the x-axis
-print(a)
-b = np.sqrt(c/beta1) # radius on the y-axis
-t = np.linspace(0, 2*np.pi, 100)
+def f(kappa_12, kappa_11=2):
+    a = 1-2/kappa_12**2
+    b = 2/kappa_11**2-2/kappa_12**2
+    if a/b > 0 and a/b < 1:
+        return a/b
+    elif a/b > 1:
+        return 1
+    else:
+        return 0
+        
 
 
+def g(kappa_21, kappa_22=2):
 
-fig = plt.figure(1, figsize=(9, 6))
+    a = 1-2/kappa_22**2
+    b = 2/kappa_21**2-2/kappa_22**2
+    if a/b > 0 and a/b < 1:
+        return a/b
+    elif a/b > 1:
+        return 1
+    else:
+        return 0  
+        
 
-plt.xlabel(r"$\gamma_{12}$", fontsize=15)
-plt.ylabel(r"$\gamma_{21}$", fontsize=15)
-plt.vlines(np.sqrt((1-2*beta1*gamma_11**2)/(2*beta2)),-2,4,linestyles = 'dashed',color='black')
-plt.hlines(np.sqrt((1-2*beta2*gamma_22**2)/(2*beta1)),-2,4,linestyles = 'dotted',color='black')
+kappa_11 = 2
+kappa_22 = 2
 
-#plt.hlines(np.sqrt((kappa-beta2*s22**2-1/2)/beta1),-2,4,linestyles = 'dashed')
+# Part dedicated to the plot of the figures:
 
-plt.plot(u+a*np.cos(t), v+b*np.sin(t), color='black', linewidth=2)
-plt.grid(color='lightgray', linestyle='--')
-plt.axis("equal")
-plt.xlim(0, 2.2)
-plt.ylim(0, 1.5)
-plt.xticks([0,0.2,0.4,0.6,0.8,1,1.2,1.4,1.6,1.8,2]) 
-plt.yticks([0,0.2,0.4,0.6,0.8,1,1.2,1.4]) 
+x_inf = np.linspace(0.7, kappa_11-0.0001, 100)
+x_sup = np.linspace(kappa_11+0.00001,3,100)
+y1_inf = np.linspace(0, 1, 100)
+y2_inf = np.linspace(0, 1, 100)
+y1_sup = np.linspace(0, 1, 100)
+y2_sup = np.linspace(0, 1, 100)
+for i in range(len(x_inf)):
+
+
+    y1_inf[i] = f(x_inf[i],kappa_11)
+    y2_inf[i] = g(x_inf[i],kappa_22)
+
+    y1_sup[i] = f(x_sup[i],kappa_11)
+    y2_sup[i] = g(x_sup[i],kappa_22)
+
+
+
+fig = plt.figure(1, figsize=(10, 6))
+plt.plot(x_sup, y1_sup, label='Upper bound', color="#0000ff")
+plt.plot(x_sup, y2_sup, label='Lower bound', color='red')
+plt.plot(x_inf, y1_inf, color='red')
+plt.plot(x_inf, y2_inf, color="#0000ff")
+plt.fill_between(x_sup, y1_sup, y2_sup, where=y1_sup > y2_sup, color='#4300c84d')
+plt.fill_between(x_inf, y1_inf, y2_inf, where=y1_inf < y2_inf, color='#4300c84d')
+plt.vlines(kappa_11,-0.1,1.1,linestyles = 'dashed',color = 'black')
+plt.xlabel(r"$\kappa_{12},\kappa_{21}$", fontsize=15)
+plt.ylabel(r"$\beta_1$", fontsize=15)
+plt.legend(loc='upper right')
+plt.ylim(-0.1,1.1)
 plt.show()
-
-
-
-
-
